@@ -411,7 +411,7 @@ wheels = [
 
 [[package]]
 name = "graphiti-core"
-version = "0.18.9"
+version = "0.20.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "diskcache" },
@@ -423,9 +423,9 @@ dependencies = [
     { name = "python-dotenv" },
     { name = "tenacity" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/2c/c5/b4480b44d40cc6031cc74fb703a36f1d81e03672f330c0e81ebfa7bda6ad/graphiti_core-0.18.9.tar.gz", hash = "sha256:00bce4693fe78f9484d46f54df34a086b35b6dda9bd07a8b09126e9e57c06f2c", size = 6467404, upload-time = "2025-08-19T16:36:39.776Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/cb/5e/cdc626f1679e77d4dec7a4ac4d61eb88f11aab8dcdde55008aaf1d2140ee/graphiti_core-0.20.2.tar.gz", hash = "sha256:98bd0908190a5ce06c5714635f7894b86ea672efee8c9c6990c8185318e4329f", size = 6491601, upload-time = "2025-09-05T16:15:00.69Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b7/2d/e91698f78c8752b7ad960990584a984eabebc2d73fd5f401bbf28bc22224/graphiti_core-0.18.9-py3-none-any.whl", hash = "sha256:30bbaef5558596ffcec09a9ef7747921a95631c67c5f5a4e2c06eef982c3554a", size = 139857, upload-time = "2025-08-19T16:36:37.618Z" },
+    { url = "https://files.pythonhosted.org/packages/31/a2/ed1cb5f78052a41e082c227c7bc71ae10d161f42844b6866ccd86384f7e1/graphiti_core-0.20.2-py3-none-any.whl", hash = "sha256:15dea3d803461bf6cbacde78d66a81c64ff2e66b7cb5bad7742df734af3406e0", size = 152805, upload-time = "2025-09-05T16:14:58.387Z" },
 ]
 
 [[package]]
@@ -962,15 +962,6 @@ wheels = [
 ]
 
 [[package]]
-name = "monotonic"
-version = "1.6"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/ea/ca/8e91948b782ddfbd194f323e7e7d9ba12e5877addf04fb2bf8fca38e86ac/monotonic-1.6.tar.gz", hash = "sha256:3a55207bcfed53ddd5c5bae174524062935efed17792e9de2ad0205ce9ad63f7", size = 7615, upload-time = "2021-08-11T14:37:28.79Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9a/67/7e8406a29b6c45be7af7740456f7f37025f0506ae2e05fb9009a53946860/monotonic-1.6-py2.py3-none-any.whl", hash = "sha256:68687e19a14f11f26d140dd5c86f3dba4bf5df58003000ed467e0e2a69bca96c", size = 8154, upload-time = "2021-04-09T21:58:05.122Z" },
-]
-
-[[package]]
 name = "multidict"
 version = "6.6.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1229,19 +1220,19 @@ wheels = [
 
 [[package]]
 name = "posthog"
-version = "3.25.0"
+version = "6.7.4"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "backoff" },
     { name = "distro" },
-    { name = "monotonic" },
     { name = "python-dateutil" },
     { name = "requests" },
     { name = "six" },
+    { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/85/a9/ec3bbc23b6f3c23c52e0b5795b1357cca74aa5cfb254213f1e471fef9b4d/posthog-3.25.0.tar.gz", hash = "sha256:9168f3e7a0a5571b6b1065c41b3c171fbc68bfe72c3ac0bfd6e3d2fcdb7df2ca", size = 75968, upload-time = "2025-04-15T21:15:45.552Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/0f/40/d7f585e09e47f492ebaeb8048a8e2ce5d9f49a3896856a7a975cbc1484fa/posthog-6.7.4.tar.gz", hash = "sha256:2bfa74f321ac18efe4a48a256d62034a506ca95477af7efa32292ed488a742c5", size = 118209, upload-time = "2025-09-05T15:29:21.517Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/54/e2/c158366e621562ef224f132e75c1d1c1fce6b078a19f7d8060451a12d4b9/posthog-3.25.0-py2.py3-none-any.whl", hash = "sha256:85db78c13d1ecb11aed06fad53759c4e8fb3633442c2f3d0336bc0ce8a585d30", size = 89115, upload-time = "2025-04-15T21:15:43.934Z" },
+    { url = "https://files.pythonhosted.org/packages/bb/95/e795059ef73d480a7f11f1be201087f65207509525920897fb514a04914c/posthog-6.7.4-py3-none-any.whl", hash = "sha256:7f1872c53ec7e9a29b088a5a1ad03fa1be3b871d10d70c8bf6c2dafb91beaac5", size = 136409, upload-time = "2025-09-05T15:29:19.995Z" },
 ]
 
 [[package]]
@@ -1980,7 +1971,7 @@ dev = [
 requires-dist = [
     { name = "apscheduler", specifier = ">=3.11.0" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.116.0" },
-    { name = "graphiti-core", specifier = "==0.18.9" },
+    { name = "graphiti-core", specifier = ">=0.20.2" },
     { name = "langchain", specifier = ">=0.3.26" },
     { name = "langchain-community", specifier = ">=0.3.27" },
     { name = "langchain-openai", specifier = ">=0.3.27" },

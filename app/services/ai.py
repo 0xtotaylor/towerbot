@@ -142,13 +142,13 @@ class AiService:
         """Get pending command for user, clearing expired ones"""
         if user_id not in self.pending_commands:
             return None
-        
+
         pending = self.pending_commands[user_id]
         # Clear if older than 10 minutes
         if datetime.now() - pending["created_at"] > timedelta(minutes=10):
             del self.pending_commands[user_id]
             return None
-        
+
         return pending["command"]
 
     def clear_pending_command(self, user_id: int):
@@ -161,10 +161,10 @@ class AiService:
         command = self.get_pending_command(user_id)
         if not command:
             return None
-        
+
         # Clear the pending command
         self.clear_pending_command(user_id)
-        
+
         # Process the message as if it was the original command with context
         if command == "ask":
             return await self.handle_ask(message)
@@ -172,7 +172,7 @@ class AiService:
             return await self.handle_connect(message)
         elif command == "request":
             return await self.handle_request(message)
-        
+
         return None
 
 

@@ -1,11 +1,10 @@
-import logging
-from typing import Optional
 import httpx
+import logging
 
-from psycopg.rows import dict_row
+from typing import Optional
+
+from fastapi.security import HTTPBearer
 from psycopg_pool import AsyncConnectionPool
-from fastapi import HTTPException, Security, status
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 
 from app.core.config import settings
 

@@ -1,8 +1,7 @@
 import os
-import asyncio
+import base64
 import logging
 import hashlib
-import base64
 
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
@@ -123,7 +122,11 @@ async def handle_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             )
             return
 
-    if settings.OAUTH_CLIENT_ID and settings.OAUTH_CLIENT_SECRET and settings.APP_ENV == "prod":
+    if (
+        settings.OAUTH_CLIENT_ID
+        and settings.OAUTH_CLIENT_SECRET
+        and settings.APP_ENV == "prod"
+    ):
         if not await auth_service.check_user_has_session(user_id):
             await handle_login(update, context)
             return
@@ -192,7 +195,11 @@ async def handle_login_direct_message(
     update: Update, context: ContextTypes.DEFAULT_TYPE, user_id: int
 ):
     """Handle login requirement by sending direct message to user"""
-    if settings.OAUTH_CLIENT_ID and settings.OAUTH_CLIENT_SECRET and settings.APP_ENV == "prod":
+    if (
+        settings.OAUTH_CLIENT_ID
+        and settings.OAUTH_CLIENT_SECRET
+        and settings.APP_ENV == "prod"
+    ):
         await context.bot.send_message(chat_id=user_id, text="OAuth is not configured.")
         return
 
@@ -256,7 +263,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if update.message.chat.type == "private":
         user_id = update.message.from_user.id
 
-        if settings.OAUTH_CLIENT_ID and settings.OAUTH_CLIENT_SECRET and settings.APP_ENV == "prod":
+        if (
+            settings.OAUTH_CLIENT_ID
+            and settings.OAUTH_CLIENT_SECRET
+            and settings.APP_ENV == "prod"
+        ):
             if not await auth_service.check_user_has_session(user_id):
                 await handle_login(update, context)
                 return
@@ -272,13 +283,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         try:
             # Check if user has a pending command first
-            pending_response = await ai_service.handle_pending_command(user_id, update.message.text)
+            pending_response = await ai_service.handle_pending_command(
+                user_id, update.message.text
+            )
             if pending_response:
                 await update.message.reply_text(
                     pending_response, reply_to_message_id=update.message.message_id
                 )
                 return
-            
+
             # Otherwise, handle as normal message
             response = await ai_service.agent(update.message.text, user_id)
             await update.message.reply_text(
@@ -303,7 +316,11 @@ async def handle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     user_id = update.message.from_user.id
 
-    if settings.OAUTH_CLIENT_ID and settings.OAUTH_CLIENT_SECRET and settings.APP_ENV == "prod":
+    if (
+        settings.OAUTH_CLIENT_ID
+        and settings.OAUTH_CLIENT_SECRET
+        and settings.APP_ENV == "prod"
+    ):
         if not await auth_service.check_user_has_session(user_id):
             await handle_login_direct_message(update, context, user_id)
             return
@@ -324,13 +341,13 @@ async def handle_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not text_after_command:
         # Set pending command and ask for context conversationally
         ai_service.set_pending_command(user_id, command)
-        
+
         prompts = {
             "ask": "What would you like to ask about?",
             "connect": "Who or what would you like to connect with?",
-            "request": "What would you like to request?"
+            "request": "What would you like to request?",
         }
-        
+
         prompt = prompts.get(command, "What would you like me to help with?")
         await update.message.reply_text(prompt)
         return
